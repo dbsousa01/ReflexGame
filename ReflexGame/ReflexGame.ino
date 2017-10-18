@@ -42,17 +42,18 @@ void loop() {
   start_routine();
   int threshold = 100;
   int timeLeft = 2000;
-  int LED;
+  int timeStart;
+  int onLED;
   int lost = 0;
 
   while(lost==0){
-    onLED = random(LED1,LED4)
+    onLED = random(LED1,LED4);
     digitalWrite(onLED,HIGH); //Turns on a random LED TO DO: play a sound when the led is on
     timeStart = millis(); //Takes the time when the LED turns on
     while(1){
       if(millis() - timeStart <= timeLeft && digitalRead(onLED)==1){ //If the time is out and the LED is still on you lose
         lost = 1;
-        Serial.println("Game Over") // TO DO: Print this in the display.
+        Serial.println("Game Over"); // TO DO: Print this in the display.
         break;
       }
     }
